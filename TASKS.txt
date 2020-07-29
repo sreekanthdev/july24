@@ -1,0 +1,27 @@
+======================================================================================
+Need to deploy the NodeJS and ReactJS application on AWS cloud service with CI/CD Pipeline Process
+
+NodeJs & ReactJS code is available on below bitbucket repositories. 
+
+https://github.com/dineshSOSU/devops-react-3
+
+https://github.com/dineshSOSU/devops-nodejs-3
+
+(If you don’t have access for this repository, Please check with HR)
+Use any tool for CI/CD process (Preferably jenkins)
+RDS service for Database
+For redis use AWS Elasticache Service
+Implement the safety measures for Server
+Use 80 port for React Js and 3000 port for Node Js
+CI/CD in master instance.
+From the master instance, it needs to trigger two different slaves.
+
+Note :
+	For EC2 Instance use free micro service 
+	RDS use micro size
+
+IAM Login detail
+User name : <Your mail>
+Account No : 
+Password :
+=========================================================================================== 
