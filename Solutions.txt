@@ -1,0 +1,66 @@
+Need to deploy the NodeJS and ReactJS application on AWS cloud service with CI/CD Pipeline Process:-NodeJs & ReactJS code is available on below bitbucket repositories. 
+
+https://github.com/dineshSOSU/devops-react-3
+
+https://github.com/dineshSOSU/devops-nodejs-3
+
+(If you don’t have access for this repository, Please check with HR)
+Use any tool for CI/CD process (Preferably jenkins)
+RDS service for Database
+For redis use AWS Elasticache Service
+Implement the safety measures for Server
+Use 80 port for React Js and 3000 port for Node Js
+CI/CD in master instance.
+From the master instance, it needs to trigger two different slaves.
+
+Note :
+	For EC2 Instance use free micro service 
+	RDS use micro size
+
+IAM Login detail
+
+User name : <Your mail>
+Account No : 
+Password :
+===============================================================================
+RDS service for Database:-
+-------------------------
+-->Goto the dashboard of RDS-> Select the service type "RDS" --->Launch DB instance
+-->Select DB(which is your prefered like Maria,Mysql,arora..etc)---->Select Dev/Test or Production orFreetier
+-->Select the Licence mode is"General Purpose" ---->DB instance class: t2.micro-1cpu 1gb RAM
+-->Multi-AZ Deployment:  -->Allocated Storage: 5GB
+
+Settings:
+--------  -->DB instance identifier: testdb---->Master username: testadmin--->password:testDB-->confirm it--->next
+---->Select VPC and subnet group --->pulic access:yes-->availabilityZone:no preference--VPC Security Groups:defaults(vpc)DB Details--->Database Name:testdb
+--->Database Port:3306---------------->Launch DB instance--->select DB take  endpoint name.--->goto the ec2 terminal in putty there--->$ mysql -h (paste the endpoint) -u (paste the adminstrator username of DB) -p -->press enter-->paste the password
+===================================================================================
+=============================================================================================================================
+For redis use AWS Elasticache Service:-
+--------------------------------------
+letsstart--->Redis-->name:Mycachecluster-->Discription:mycachecluster-->engine:default or 3.2.10 port:6379--->parameter:default.redis5.0-->nodetype:cache.t2.micro(0.5GiB)--->No.of.replicas:2or..-->Multi-AZ:enable it-->Select"VPC"-->Availability Zone:no preference-->security groups:default--->Launch it===connecting to ==sudo apt install redis-tools;redis -h endpoint -p 6379 press enter
+================================================================================
+CI/CD in master instance.
+From the master instance, it needs to trigger two different slavves:-
+---------------------------------------------------------------------------------
+
+passwd less ssh steps:-
+=======================
+slaves:steps:-
+------------- 
+$ sudo passwd ubuntu-->assign password (ex:123)-->$sudo vim /etc/ssh/sshd_config;open ssh file change PassowordAthentication is "yes" and save it ESC:wq enter--->Restart the ssh"sudo service ssh restart"------>sudo apt-get install openjdk-8-jdk  --->sudo wget http://ip_of_master:8080/jnlpJars/slave.jar  
+--->sudo chmod u+x slave.jar  -->sudo mkdir workspace
+Master:steps:-
+------------
+#ssh-keygen ---->ssh-copy-id ubuntu@ipadress_of_slave"
+create node in master:
+---------------------
+Name:slave1or2 workspacefolder:/home/ubuntu/workspace; lable:myslave1or2----->goto Launch via excution cmd: ssh ubuntu@ip_of_slaves java -jar slave.jar-->save and okay 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Need to deploy the NodeJS and ReactJS application on AWS cloud service with CI/CD Pipeline Process:-NodeJs & ReactJS code is available on below bitbucket repositories
+======================================================================================================================================================================
+
+
+
+
